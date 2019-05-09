@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -55,16 +56,36 @@ public class EmployeeRestController1 {
 		
 		//add mapping for PUT /employees - update
 		
-		@PutMapping("/employeeattendance")
-		public Employee1 updateEmployee(@RequestBody Employee1 theEmployee) {
+		
+//		public Employee1 updateEmployee(@RequestBody Employee1 theEmployee) {
+//			
+//			employeeService1.save(theEmployee);
+//			
+//			return theEmployee;
+//		}
+//		
+		@PutMapping("/employeeattendance/{employeeId}")
+		public Employee1 updateEmployee(@PathVariable(value = "employeeId") int employeeId, @RequestBody Employee1 theEmployee) {
+			Employee1 theEmployee1 = employeeService1.findById(employeeId);
+		  
+			if(theEmployee1 == null) {
+				throw new RuntimeException("Employee id not found - "+ employeeId);
+			}
 			
-			employeeService1.save(theEmployee);
-			
-			return theEmployee;
+			theEmployee1.setEmailId(theEmployee.getEmailId());
+			theEmployee1.setFirstName(theEmployee.getFirstName());
+			theEmployee1.setLastName(theEmployee.getLastName());
+			theEmployee1.setDepartment(theEmployee.getDepartment());
+		    theEmployee1.setImageUrl(theEmployee.getImageUrl());
+		    employeeService1.save(theEmployee1);
+		return theEmployee1;
 		}
 		
-		//add mapping Delete
 		
+		
+		
+		
+		//add mapping Delete
 		@DeleteMapping("/employeeattendance/{employeeId}")
 		public String deleteEmployee(@PathVariable int employeeId) {
 			

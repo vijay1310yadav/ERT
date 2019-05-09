@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springboot.Ertapp.entity.Employee;
+
 import com.luv2code.springboot.Ertapp.service.EmployeeService;
 
 @RestController
@@ -55,12 +56,28 @@ public class EmployeeRestController {
 	
 	//add mapping for PUT /employees - update
 	
-	@PutMapping("/employeedetails")
-	public Employee updateEmployee(@RequestBody Employee theEmployee) {
+//	@PutMapping("/employeedetails")
+//	public Employee updateEmployee(@RequestBody Employee theEmployee) {
+//		
+//		employeeService.save(theEmployee);
+//		
+//		return theEmployee;
+//	}
+	@PutMapping("/employeedetails/{employeeId}")
+	public Employee updateEmployee(@PathVariable(value = "employeeId") int employeeId, @RequestBody Employee theEmployee) {
+		Employee theEmployee2 = employeeService.findById(employeeId);
+	  
+		if(theEmployee2 == null) {
+			throw new RuntimeException("Employee id not found - "+ employeeId);
+		}
 		
-		employeeService.save(theEmployee);
-		
-		return theEmployee;
+		theEmployee2.setEmailId(theEmployee.getEmailId());
+		theEmployee2.setFirstName(theEmployee.getFirstName());
+		theEmployee2.setLastName(theEmployee.getLastName());
+		theEmployee2.setDepartment(theEmployee.getDepartment());
+	    theEmployee2.setImageUrl(theEmployee.getImageUrl());
+	    employeeService.save(theEmployee2);
+	return theEmployee2;
 	}
 	
 	//add mapping Delete
