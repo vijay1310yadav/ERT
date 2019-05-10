@@ -64,9 +64,18 @@ INSERT INTO `employee_status` VALUES
 	(5,'Hemant','Kambli','unknown');
 
 -- Dump completed on 2016-09-24 21:50:59
+-- Adding Status and attendance column in employee details
 
+SELECT * FROM employee.employee_details;
+UPDATE employee_details
+SET attendance = false
+WHERE employee_id = 1;
+alter table employee_details add column status varchar(45) after attendance;
+update  employee_details  set status="danger" where employee_id=1;
+update  employee_details  set status="safe" where employee_id=2;
+update  employee_details  set status="unknown" where employee_id=3;
+update  employee_details  set status="danger" where employee_id=4;
 
-
-
+update  employee_details  set status="safe" where employee_id=5;
 
 
