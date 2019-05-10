@@ -9,6 +9,7 @@ export interface Employee {
     dob: string;
     department: string;
     attendance: boolean;
+    status: string;
 
 
 }

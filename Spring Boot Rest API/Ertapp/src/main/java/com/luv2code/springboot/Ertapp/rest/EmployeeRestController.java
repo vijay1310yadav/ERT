@@ -43,16 +43,37 @@ public class EmployeeRestController {
 		return theEmployee;
 	}
 	
-	//add mapping for post employee
+	//Update mapping for post employee
+	
 	@PostMapping("/employeedetails")
 	public Employee addEmployee(@RequestBody Employee theEmployee) {
 		
-		theEmployee.setId(0);
+	Employee oldEmployee = employeeService.findById(theEmployee.getId());
+		
+		if(oldEmployee == null) {
+			theEmployee.setId(0);
+		}
 		
 		employeeService.save(theEmployee);
 		
 		return theEmployee;
 	}
+	
+	
+	@PostMapping("/employeedetails/{employeeId}")
+	public String removeEmployee(@RequestBody Employee someEmployee,@PathVariable int EmployeeId) {
+		
+	Employee theEmployee = employeeService.findById(EmployeeId);
+		
+		if(theEmployee == null) {
+			throw new RuntimeException("Exception id not found-  "+ EmployeeId);
+		}
+		
+		employeeService.deleteById(EmployeeId);
+		
+		return "Successfully Deleted Employee with ID: - " + EmployeeId;
+	}
+	
 	
 	//add mapping for PUT /employees - update
 	
@@ -63,41 +84,45 @@ public class EmployeeRestController {
 //		
 //		return theEmployee;
 //	}
-	@PutMapping("/employeedetails/{employeeId}")
-	public Employee updateEmployee(@PathVariable(value = "employeeId") int employeeId, @RequestBody Employee theEmployee) {
-		Employee theEmployee2 = employeeService.findById(employeeId);
-	  
-		if(theEmployee2 == null) {
-			throw new RuntimeException("Employee id not found - "+ employeeId);
-		}
-		
-		theEmployee2.setEmailId(theEmployee.getEmailId());
-		theEmployee2.setFirstName(theEmployee.getFirstName());
-		theEmployee2.setLastName(theEmployee.getLastName());
-		theEmployee2.setDepartment(theEmployee.getDepartment());
-	    theEmployee2.setImageUrl(theEmployee.getImageUrl());
-	    employeeService.save(theEmployee2);
-	return theEmployee2;
-	}
 	
-	//add mapping Delete
 	
-	@DeleteMapping("/employeedetails/{employeeId}")
-	public String deleteEmployee(@PathVariable int employeeId) {
-		
-		Employee tempEmployee = employeeService.findById(employeeId);
-		
-		//throwException
-		
-		if(tempEmployee == null) {
-			throw new RuntimeException("Employee id not found - "+ employeeId);
-		}
-		
-		employeeService.deleteById(employeeId);
-		
-		return "Deleted employee id - " + employeeId;
-	}
 	
+	
+//	@PutMapping("/employeedetails/{employeeId}")
+//	public Employee updateEmployee(@PathVariable(value = "employeeId") int employeeId, @RequestBody Employee theEmployee) {
+//		Employee theEmployee2 = employeeService.findById(employeeId);
+//	  
+//		if(theEmployee2 == null) {
+//			throw new RuntimeException("Employee id not found - "+ employeeId);
+//		}
+//		
+//		theEmployee2.setEmailId(theEmployee.getEmailId());
+//		theEmployee2.setFirstName(theEmployee.getFirstName());
+//		theEmployee2.setLastName(theEmployee.getLastName());
+//		theEmployee2.setDepartment(theEmployee.getDepartment());
+//	    theEmployee2.setImageUrl(theEmployee.getImageUrl());
+//	    employeeService.save(theEmployee2);
+//	return theEmployee2;
+//	}
+//	
+//	//add mapping Delete
+//	
+//	@DeleteMapping("/employeedetails/{employeeId}")
+//	public String deleteEmployee(@PathVariable int employeeId) {
+//		
+//		Employee tempEmployee = employeeService.findById(employeeId);
+//		
+//		//throwException
+//		
+//		if(tempEmployee == null) {
+//			throw new RuntimeException("Employee id not found - "+ employeeId);
+//		}
+//		
+//		employeeService.deleteById(employeeId);
+//		
+//		return "Deleted employee id - " + employeeId;
+//	}
+//	
 	
 	
 	

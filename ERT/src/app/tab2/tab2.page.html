@@ -22,16 +22,16 @@
                     <img [src]="emp.imageUrl">
                 </ion-avatar>
                 <ion-label>
-                    <h2><b>{{ emp.firstName }} {{ emp.lastName }} {{emp.attendance}}</b></h2>
+                    <h2><b>{{ emp.firstName }} {{ emp.lastName }} </b></h2>
                     <h5>{{ emp.department }}</h5>
 
 
                     <ion-chip color="success" class="ion-color ion-color-success ios ion-activatable hydrated">
                         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
-
+                            <a *ngIf="emp.attendance == 1">Present</a>
+                            <a *ngIf="emp.attendance == 0">Absent</a>
                         </ion-label>
                     </ion-chip>
-                    {{emp.id}}
                 </ion-label>
             </ion-item>
 

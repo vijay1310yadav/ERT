@@ -14,7 +14,6 @@ export class Tab2Page {
   status;
   stat;
   employees;
-  title = "Sometjhing";
 
   constructor(private empService: EmployeeService, private http: HttpClient, private route: Router) {
     // empService.getAllEmployee().subscribe((employee) => {
@@ -29,7 +28,7 @@ export class Tab2Page {
 
 
     this.status = empService.getAllEmployeeStatus().subscribe((response) => {
-      console.log(response);
+      console.log("Get ALL EmployeesSTATUS request", response);
 
       this.status = response;
       console.log("Status - " + this.status[0].id);

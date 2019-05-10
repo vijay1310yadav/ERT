@@ -10,6 +10,8 @@
 <ion-content padding>
     <div *ngIf="emp">
         <ion-card>
+
+
             <img [src]="emp.imageUrl" alt="{{emp?.name}}" (error)="updateImage($event)">
             <ion-card-content>
                 <ion-card-title>{{emp?.firstName}} {{emp?.lastName}}</ion-card-title>

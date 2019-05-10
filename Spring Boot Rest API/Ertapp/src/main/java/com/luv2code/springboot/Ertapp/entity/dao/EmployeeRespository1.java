@@ -6,4 +6,6 @@ import com.luv2code.springboot.Ertapp.entity.Employee1;
 
 public interface EmployeeRespository1 extends JpaRepository<Employee1, Integer> {
 
+	
+	
 }

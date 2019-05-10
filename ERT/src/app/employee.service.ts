@@ -41,6 +41,15 @@ export class EmployeeService {
     return response;
   }
 
+
+  public updateEmployeeStatus(body: any) {
+
+    let url = 'http://localhost:8080/ert/employeedetails';
+    let response = this.http.post(url, body);
+    response.subscribe(response => (console.log("This is Updates response", response)));
+    return response;
+  }
+
   getAllEmployeeStatus() {
 
     return this.http.get('http://localhost:8080/ert/employeestatus');

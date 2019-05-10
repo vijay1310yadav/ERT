@@ -1,53 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Three
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Tab Three
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
 
-  <h3>Please update your present state :</h3>
+    <h3>Please update your present state :</h3>
 
-  <ion-list>
-      <ion-radio-group>
-        <ion-list-header>
-          <ion-label>I am in...</ion-label>
-        </ion-list-header>
-    
-        <ion-item>
-          <ion-label >Danger</ion-label>
-          <ion-radio slot="start" value="biff" color="danger" ></ion-radio>
-        </ion-item>
-    
-        <ion-item>
-          <ion-label>Safe</ion-label>
-          <ion-radio slot="start" value="griff" color="success"></ion-radio>
-        </ion-item>
-    
-      </ion-radio-group>
+    <ion-list>
+        <ion-radio-group>
+            <ion-list-header>
+                <ion-label>STATUS</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label color="danger">Danger</ion-label>
+                <ion-radio slot="start" (ionSelect)="onChange('danger')" color="danger"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label color="success">Safe</ion-label>
+                <ion-radio slot="start" (ionSelect)="onChange('safe')" color="success"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label color="dark">Unknown</ion-label>
+                <ion-radio slot="start" (ionSelect)="onChange('unknown')" color="dark"></ion-radio>
+            </ion-item>
+
+        </ion-radio-group>
     </ion-list>
-    
+
     <ion-chip color="danger" class="ion-color ion-color-danger ios ion-activatable hydrated">
         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">Danger</ion-label>
-      </ion-chip>
-      <ion-chip color="success" class="ion-color ion-color-success ios ion-activatable hydrated">
+    </ion-chip>
+    <ion-chip color="success" class="ion-color ion-color-success ios ion-activatable hydrated">
         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">Safe</ion-label>
-      </ion-chip>
-    
- 
+    </ion-chip>
 
-<!-- Input with placeholder -->
-<h3>Your current location :</h3>
-<ion-input placeholder="Enter Message here..."></ion-input>
 
-<!-- Round -->
-<ion-button shape="round">Send</ion-button>
-  
-  
-  
 
-  
-    
+    <!-- Input with placeholder -->
+    <h3>Your current location :</h3>
+    <ion-input placeholder="Enter Message here..."></ion-input>
+
+    <!-- Round -->
+    <ion-button shape="round">Send</ion-button>
+
+
+
 </ion-content>
