@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="employee_attendance")
+@Table(name="employee_status")
 public class Employee1 {
 	
 	//define field
@@ -16,28 +16,26 @@ public class Employee1 {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="employee_id")
 	private int id;
-	@Column(name="image_url")
-	private String imageUrl;
+	
 	@Column(name="first_name")
 	private String firstName;
 	@Column(name="last_name")
 	private String lastName;
-	@Column(name="email_id")
-	private String emailId;
-	@Column(name="department")
-	private String department;
+
+	@Column(name="status")
+	private String status;
 	
 	//define constructor
 	public Employee1() {
 		
 	}
 
-	public Employee1(String imageUrl, String firstName, String lastName, String emailId, String department) {
-		this.imageUrl = imageUrl;
+	public Employee1(String firstName, String lastName,String status) {
+		
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.emailId = emailId;
-		this.department = department;
+		
+		this.status = status;
 	}
    
 	
@@ -50,13 +48,7 @@ public class Employee1 {
 		this.id = id;
 	}
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
-
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -74,27 +66,24 @@ public class Employee1 {
 		this.lastName = lastName;
 	}
 
-	public String getEmailId() {
-		return emailId;
+
+	
+
+	public String getStatus() {
+		return status;
 	}
 
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-	public String getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(String department) {
-		this.department = department;
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee1 [id=" + id + ", imageUrl=" + imageUrl + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailId=" + emailId + ", department=" + department + "]";
+		return "Employee1 [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", status=" + status
+				+ "]";
 	}
+
+	
 	
 	
 	

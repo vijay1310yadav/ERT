@@ -27,12 +27,12 @@ public class EmployeeRestController1 {
 		employeeService1 = theEmployeeService1;
 	}
 	//expose
-		@GetMapping("/employeeattendance")
+		@GetMapping("/employeestatus")
 		public List<Employee1> findAll(){
 			return employeeService1.findAll();
 		}
 		//get employee id
-		@GetMapping("/employeeattendance/{employeeId}")
+		@GetMapping("/employeestatus/{employeeId}")
 		public Employee1 getEmployee(@PathVariable int employeeId) {
 			Employee1 theEmployee1 = employeeService1.findById(employeeId);
 			
@@ -44,7 +44,7 @@ public class EmployeeRestController1 {
 		}
 		
 		//add mapping for post employee
-		@PostMapping("/employeeattendance")
+		@PostMapping("/employeestatus")
 		public Employee1 addEmployee(@RequestBody Employee1 theEmployee) {
 			
 			theEmployee.setId(0);
@@ -64,7 +64,7 @@ public class EmployeeRestController1 {
 //			return theEmployee;
 //		}
 //		
-		@PutMapping("/employeeattendance/{employeeId}")
+		@PutMapping("/employeestatus/{employeeId}")
 		public Employee1 updateEmployee(@PathVariable(value = "employeeId") int employeeId, @RequestBody Employee1 theEmployee) {
 			Employee1 theEmployee1 = employeeService1.findById(employeeId);
 		  
@@ -72,11 +72,11 @@ public class EmployeeRestController1 {
 				throw new RuntimeException("Employee id not found - "+ employeeId);
 			}
 			
-			theEmployee1.setEmailId(theEmployee.getEmailId());
+			
 			theEmployee1.setFirstName(theEmployee.getFirstName());
 			theEmployee1.setLastName(theEmployee.getLastName());
-			theEmployee1.setDepartment(theEmployee.getDepartment());
-		    theEmployee1.setImageUrl(theEmployee.getImageUrl());
+			;
+		    theEmployee1.setStatus(theEmployee.getStatus());
 		    employeeService1.save(theEmployee1);
 		return theEmployee1;
 		}
@@ -86,7 +86,7 @@ public class EmployeeRestController1 {
 		
 		
 		//add mapping Delete
-		@DeleteMapping("/employeeattendance/{employeeId}")
+		@DeleteMapping("/employeestatus/{employeeId}")
 		public String deleteEmployee(@PathVariable int employeeId) {
 			
 			Employee1 tempEmployee1 = employeeService1.findById(employeeId);

@@ -28,27 +28,56 @@ public class Employee {
 	private String dob;
 	@Column(name="department")
 	private String department;
-	
-	
+	@Column(name="attendance")
+	private boolean attendance;
+	@Column(name="status")
+	private String status;
 	
 	//define constructors
 	public Employee() {
 		
 	}
+	
 
-
-
-	public Employee(String imageUrl, String firstName, String lastName, String emailId, String dob, String department) {
+	public Employee(int id, String imageUrl, String firstName, String lastName, String emailId, String dob,
+			String department, boolean attendance, String status) {
+		this.id = id;
 		this.imageUrl = imageUrl;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.emailId = emailId;
 		this.dob = dob;
 		this.department = department;
+		this.attendance = attendance;
+		this.status = status;
 	}
 
+
 	//define getter/setter
+
+	public boolean isAttendance() {
+		return attendance;
+	}
+
+
 	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public void setAttendance(boolean attendance) {
+		this.attendance = attendance;
+	}
+
+
+
+
 
 	public int getId() {
 		return id;
@@ -131,14 +160,24 @@ public class Employee {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	//define toString
 
 
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", imageUrl=" + imageUrl + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailId=" + emailId + ", dob=" + dob + ", department=" + department + "]";
+				+ ", emailId=" + emailId + ", dob=" + dob + ", department=" + department + ", attendance=" + attendance
+				+ ", status=" + status + "]";
 	}
+	
+
+
+
+
+
+	
+
+
+	
 	
 	
 	
