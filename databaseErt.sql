@@ -6,7 +6,7 @@ select * from employee_details;
 update employeedetails set imageurl="https://upload.wikimedia.org/wikipedia/commons/4/4d/Profile_Picture_for_user_MereTechnicality_%281%29.png" where id=2;
 */
 
-CREATE DATABASE IF NOT EXISTS `employee` ;
+-- CREATE DATABASE IF NOT EXISTS `employee` ;
 USE `employee`;
 --
 -- Table structure for table `employee_details`
@@ -39,8 +39,43 @@ INSERT INTO `employee_details` VALUES
 
 -- Dump completed on 2016-09-24 21:50:59
 
+-- Creating Status Table...
 
 
+DROP TABLE IF EXISTS `employee_status`;
+CREATE TABLE `employee_status` (
+  `employee_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_name` varchar(45) DEFAULT NULL,
+  `last_name` varchar(45) DEFAULT NULL,
+ `status` varchar(45) DEFAULT 'unknown',
+  PRIMARY KEY (`employee_id`)
+);
+--
+-- Dumping data for table `employee_status`
+--
 
+LOCK TABLES `employee_status` WRITE;
+
+INSERT INTO `employee_status` VALUES 
+	(1,'Vijay','Yadav','safe'),
+	(2,'Rajat','Salvi','danger'),
+	(3,'Ajay','Mall','safe'),
+	(4,'Siddhi','Raut','danger'),
+	(5,'Hemant','Kambli','unknown');
+
+-- Dump completed on 2016-09-24 21:50:59
+-- Adding Status and attendance column in employee details
+
+SELECT * FROM employee.employee_details;
+UPDATE employee_details
+SET attendance = false
+WHERE employee_id = 1;
+alter table employee_details add column status varchar(45) after attendance;
+update  employee_details  set status="danger" where employee_id=1;
+update  employee_details  set status="safe" where employee_id=2;
+update  employee_details  set status="unknown" where employee_id=3;
+update  employee_details  set status="danger" where employee_id=4;
+
+update  employee_details  set status="safe" where employee_id=5;
 
 

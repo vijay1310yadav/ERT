@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{emp?.firstName}} {{emp?.lastName}}</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <div *ngIf="emp">
+        <ion-card>
+
+
+            <img [src]="emp.imageUrl" alt="{{emp?.name}}" (error)="updateImage($event)">
+            <ion-card-content>
+                <ion-card-title>{{emp?.firstName}} {{emp?.lastName}}</ion-card-title>
+
+                <p>{{emp?.department}}</p>
+                <p>{{emp?.dob}}</p>
+                <ion-card-title class="stats-title">Contact Details:</ion-card-title>
+
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

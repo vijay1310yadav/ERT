@@ -1,7 +1,12 @@
 import { Employee } from './models/employee.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +21,36 @@ export class EmployeeService {
     return this.http.get('http://localhost:8080/ert/employeedetails');
   }
 
+
+
   public deleteEmployee(empId: number) {
     console.log(empId);
-    return this.http.delete('http://localhost:8080/ert/employeedetails/' + empId);
+    let url = 'http://localhost:8080/ert/employeedetails/' + empId;
+
+    console.log(url, "\tThis is the URL");
+
+    return this.http.delete(url, httpOptions);
+  }
+
+  public getEmployeeById(empId: number) {
+    console.log(empId);
+    let url = 'http://localhost:8080/ert/employeedetails/' + empId;
+    let response = this.http.get(url);
+    response.subscribe(response => (console.log("This is response", response)));
+    return response;
+  }
+
+
+  public updateEmployeeStatus(body: any) {
+
+    let url = 'http://localhost:8080/ert/employeedetails';
+    let response = this.http.post(url, body);
+    response.subscribe(response => (console.log("This is Updates response", response)));
+    return response;
+  }
+
+  getAllEmployeeStatus() {
+
+    return this.http.get('http://localhost:8080/ert/employeestatus');
   }
 }
