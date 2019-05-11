@@ -70,6 +70,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRespository.deleteById(theId);	
         }
 
+	@Override
+	public boolean isIdExist(int theId) {
+		// TODO Auto-generated method stub
+		return employeeRespository.existsById(theId);
+	}
+
 //	@Override
 //	public void update(int employeeId, Employee theEmployee,String attendance) {
 //		// TODO Auto-generated method stub

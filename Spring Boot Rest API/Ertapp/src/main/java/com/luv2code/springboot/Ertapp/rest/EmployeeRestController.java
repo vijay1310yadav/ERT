@@ -2,17 +2,14 @@ package com.luv2code.springboot.Ertapp.rest;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springboot.Ertapp.entity.Employee;
-
 import com.luv2code.springboot.Ertapp.service.EmployeeService;
 
 @RestController
@@ -43,36 +40,90 @@ public class EmployeeRestController {
 		return theEmployee;
 	}
 	
-	//Update mapping for post employee
+	//ADD mapping for post employee
 	
 	@PostMapping("/employeedetails")
 	public Employee addEmployee(@RequestBody Employee theEmployee) {
 		
-	Employee oldEmployee = employeeService.findById(theEmployee.getId());
-		
-		if(oldEmployee == null) {
-			theEmployee.setId(0);
-		}
-		
+		theEmployee.setId(0);
 		employeeService.save(theEmployee);
 		
 		return theEmployee;
 	}
 	
+	//UPDATE using POST Method...
+	
 	
 	@PostMapping("/employeedetails/{employeeId}")
-	public String removeEmployee(@RequestBody Employee someEmployee,@PathVariable int EmployeeId) {
+	public Employee updateEmployee(@RequestBody Employee newEmployee,@PathVariable int employeeId) {
 		
-	Employee theEmployee = employeeService.findById(EmployeeId);
+	Employee theEmployee = employeeService.findById(employeeId);
+	
+	
+	if(theEmployee == null) {
+		throw new RuntimeException("Employee ID not Found: " + employeeId);
+	}
+	
+	 employeeService.save(newEmployee);
+	
+	return newEmployee;
+	
+		
+//	
+//	if(oldEmployee == null) {
+//		theEmployee.setId(0);
+//
+//		employeeService.save(theEmployee);
+//
+//		return theEmployee;
+//	}
+//	
+//	employeeService.save(theEmployee);
+//	
+//	return oldEmployee;
+}
+	
+	@PostMapping("/employeedetails/remove/{employeeId}")
+	public String removeEmployee(@PathVariable int employeeId) {
+		
+		
+		Employee theEmployee = employeeService.findById(employeeId);
 		
 		if(theEmployee == null) {
-			throw new RuntimeException("Exception id not found-  "+ EmployeeId);
+			throw new RuntimeException("Id not found - "+employeeId);
 		}
 		
-		employeeService.deleteById(EmployeeId);
-		
-		return "Successfully Deleted Employee with ID: - " + EmployeeId;
+		employeeService.deleteById(employeeId);
+		return "Id is deleted - " + employeeId;
 	}
+	
+	
+//		if(theEmployee == null) {
+//			throw new RuntimeException("Exception id not found-  "+ EmployeeId);
+//		}
+//		
+//		employeeService.deleteById(EmployeeId);
+//		
+//		return "Successfully Deleted Employee with ID: - " + EmployeeId;
+//	}
+	
+	
+	
+	// DELETE using POST Method..
+//	
+//	@PostMapping("/employeedetails/{employeeId}")
+//	public String removeEmployee(@RequestBody Employee someEmployee,@PathVariable int EmployeeId) {
+//		
+//	Employee theEmployee = employeeService.findById(EmployeeId);
+//		
+//		if(theEmployee == null) {
+//			throw new RuntimeException("Exception id not found-  "+ EmployeeId);
+//		}
+//		
+//		employeeService.deleteById(EmployeeId);
+//		
+//		return "Successfully Deleted Employee with ID: - " + EmployeeId;
+//	}
 	
 	
 	//add mapping for PUT /employees - update

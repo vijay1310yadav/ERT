@@ -13,38 +13,60 @@
 
         <ion-item-sliding>
 
-            <!-- <ion-item-options side="start">
+            <ion-item-options side="start">
                 <ion-item-option color="success" (click)="onDetails('tabs/employee-detail/'+ emp.id )">Details
                 </ion-item-option>
-            </ion-item-options> -->
-            <ion-item (click)="onDetails('tabs/employee-detail/'+ emp.id )">
+            </ion-item-options>
+            <ion-item>
                 <ion-avatar slot="start" class="ios hydrated">
                     <img [src]="emp.imageUrl">
                 </ion-avatar>
                 <ion-label>
                     <h2><b>{{ emp.firstName }} {{ emp.lastName }} </b></h2>
+
+                    <ion-item>
+                        <ion-label color="danger">Danger</ion-label>
+                        <ion-radio slot="start" (ionSelect)="onChange('danger', emp.id)" color="danger"></ion-radio>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label color="success">Safe</ion-label>
+                        <ion-radio slot="start" (ionSelect)="onChange('safe',emp.id)" color="success"></ion-radio>
+                    </ion-item>
+                    <!-- <ion-item>
+                        <ion-label color="dark">Unknown</ion-label>
+                        <ion-radio slot="start" (ionSelect)="onChange('unknown')" color="dark"></ion-radio>
+                    </ion-item> -->
+
+                    <!-- <select name="status" id="status">
+                        <option value="safe" (click)="onChange('value')">Safe</option>
+                        <option value="danger" (click)="onChange(value)">Danger</option>
+                        <option value="unknown" (ionSelect)="onChange(value)">Unknown</option>
+                    </select> -->
+
                     <h5>{{ emp.department }}</h5>
 
 
                     <ion-chip color="success" class="ion-color ion-color-success ios ion-activatable hydrated">
                         <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
-                            <a *ngIf="emp.attendance == 1">Present</a>
-                            <a *ngIf="emp.attendance == 0">Absent</a>
+                            <!-- <a *ngIf="emp.attendance == 1">Present</a>
+                            <a *ngIf="emp.attendance == 0">Absent</a> -->
+
+                            <span>{{emp.status}}</span>
                         </ion-label>
                     </ion-chip>
                 </ion-label>
             </ion-item>
 
-            <ion-item-options side="end">
+            <!-- <ion-item-options side="end">
                 <ion-item-option color="success" (click)="onDetails('tabs/employee-detail/'+ emp.id )">Details
                 </ion-item-option>
-            </ion-item-options>
+            </ion-item-options> -->
 
-            <!-- <ion-item-options side="end">
-                <ion-item-option (click)="onRemove(emp.id)" color="secondary">Remove
+            <ion-item-options side="end">
+                <ion-item-option (click)="onRemove(emp.id,emp)" color="secondary">Remove
                 </ion-item-option>
 
-            </ion-item-options> -->
+            </ion-item-options>
 
         </ion-item-sliding>
 

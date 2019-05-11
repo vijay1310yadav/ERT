@@ -79,3 +79,5 @@ update  employee_details  set status="danger" where employee_id=4;
 update  employee_details  set status="safe" where employee_id=5;
 
 
+
+
