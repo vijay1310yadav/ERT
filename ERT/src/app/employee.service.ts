@@ -2,7 +2,6 @@ import { Employee } from './models/employee.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { Observable } from 'rxjs';
 
 
 const httpOptions = {
