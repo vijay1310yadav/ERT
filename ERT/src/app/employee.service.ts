@@ -29,7 +29,7 @@ export class EmployeeService {
 
     console.log(url, "\tThis is the URL");
 
-    return this.http.post(url, emp);
+    return this.http.post(url, emp, { responseType: 'text' });
   }
 
   public getEmployeeById(empId: number) {
@@ -44,7 +44,7 @@ export class EmployeeService {
   public updateEmployeeStatus(empId, body: any) {
 
     let url = 'http://localhost:8080/ert/employeedetails/' + empId;
-    let response = this.http.post(url, body, httpOptions);
+    let response = this.http.post(url, body, { responseType: 'text' });
     response.subscribe(reply => {
       console.log("This is Updates response", reply);
       return reply;
