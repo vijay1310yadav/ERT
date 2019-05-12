@@ -16,13 +16,14 @@ export class Tab2Page {
   stat;
   employees: Employee[];
   statusValue;
+
   constructor(private empService: EmployeeService, private http: HttpClient, private route: Router) {
     // empService.getAllEmployee().subscribe((employee) => {
     //   this.employee = employee;
     // });
     this.emp = empService.getAllEmployee();
     this.emp.subscribe((response) => {
-      console.log(response);
+      // console.log(response);
       this.employees = response;
     })
 
@@ -57,9 +58,12 @@ export class Tab2Page {
 
 
   onDetails(url) {
-    console.log(url);
+    // console.log(url);
     this.route.navigateByUrl(url);
   }
+
+
+
 
 
   onChange(value, empId) {
@@ -74,7 +78,7 @@ export class Tab2Page {
         }
       }
     }
-    console.log("This is the em " + temp.id);
+    console.log("This is the em " + temp.status);
 
     temp.status = value;
     this.empService.updateEmployeeStatus(empId, temp);
@@ -83,12 +87,8 @@ export class Tab2Page {
     // console.log(tempEmp, "This is temp Emp");
 
 
-    // this.empService.updateEmployeeStatus()
-
-
-
-
-
   }
+
+
 
 }

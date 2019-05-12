@@ -2,6 +2,7 @@ package com.luv2code.springboot.Ertapp.rest;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,11 +25,15 @@ public class EmployeeRestController {
 	}
 	
 	//expose
+
+	@CrossOrigin(origins = "*")
 	@GetMapping("/employeedetails")
 	public List<Employee> findAll(){
 		return employeeService.findAll();
 	}
 	//get employee id
+
+	@CrossOrigin(origins = "*")
 	@GetMapping("/employeedetails/{employeeId}")
 	public Employee getEmployee(@PathVariable int employeeId) {
 		Employee theEmployee = employeeService.findById(employeeId);
@@ -41,7 +46,7 @@ public class EmployeeRestController {
 	}
 	
 	//ADD mapping for post employee
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/employeedetails")
 	public Employee addEmployee(@RequestBody Employee theEmployee) {
 		
@@ -53,7 +58,7 @@ public class EmployeeRestController {
 	
 	//UPDATE using POST Method...
 	
-	
+	@CrossOrigin(origins = "*")
 	@PostMapping("/employeedetails/{employeeId}")
 	public Employee updateEmployee(@RequestBody Employee newEmployee,@PathVariable int employeeId) {
 		
@@ -82,7 +87,8 @@ public class EmployeeRestController {
 //	
 //	return oldEmployee;
 }
-	
+
+	@CrossOrigin(origins = "*")
 	@PostMapping("/employeedetails/remove/{employeeId}")
 	public String removeEmployee(@PathVariable int employeeId) {
 		

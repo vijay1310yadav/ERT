@@ -44,7 +44,7 @@ export class EmployeeService {
   public updateEmployeeStatus(empId, body: any) {
 
     let url = 'http://localhost:8080/ert/employeedetails/' + empId;
-    let response = this.http.post(url, body, { responseType: 'text' });
+    let response = this.http.post(url, body, { responseType: 'json' });
     response.subscribe(reply => {
       console.log("This is Updates response", reply);
       return reply;

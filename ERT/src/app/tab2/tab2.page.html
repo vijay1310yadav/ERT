@@ -6,7 +6,43 @@
     </ion-toolbar>
 </ion-header>
 
+
+
+
 <ion-content padding>
+
+    <ion-list>
+        <ion-radio-group>
+            <ion-list-header>
+                Auto Manufacturers
+            </ion-list-header>
+
+            <ion-item>
+                <ion-label>Cord</ion-label>
+                <ion-radio value="cord"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Duesenberg</ion-label>
+                <ion-radio value="duesenberg"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Hudson</ion-label>
+                <ion-radio value="hudson"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Packard</ion-label>
+                <ion-radio value="packard"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Studebaker</ion-label>
+                <ion-radio value="studebaker"></ion-radio>
+            </ion-item>
+        </ion-radio-group>
+    </ion-list>
 
     <!-- List of Text Items -->
     <ion-list *ngFor="let emp of employees">
@@ -23,15 +59,19 @@
                 </ion-avatar>
                 <ion-label>
                     <h2><b>{{ emp.firstName }} {{ emp.lastName }} </b></h2>
+                    <ion-radio-group>
+                        <ion-item>
+                            <ion-label color="danger">Danger</ion-label>
+                            <ion-radio slot="start" (ionSelect)="onChange( 'danger', emp.id)" color="danger">
+                            </ion-radio>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label color="success">Safe</ion-label>
+                            <ion-radio slot="start" (ionSelect)="onChange('safe',emp.id)" color="success"></ion-radio>
+                        </ion-item>
 
-                    <ion-item>
-                        <ion-label color="danger">Danger</ion-label>
-                        <ion-radio slot="start" (ionSelect)="onChange('danger', emp.id)" color="danger"></ion-radio>
-                    </ion-item>
-                    <ion-item>
-                        <ion-label color="success">Safe</ion-label>
-                        <ion-radio slot="start" (ionSelect)="onChange('safe',emp.id)" color="success"></ion-radio>
-                    </ion-item>
+                    </ion-radio-group>
+
                     <!-- <ion-item>
                         <ion-label color="dark">Unknown</ion-label>
                         <ion-radio slot="start" (ionSelect)="onChange('unknown')" color="dark"></ion-radio>
@@ -73,7 +113,7 @@
     </ion-list>
 
 
-    <ion-fab vertical="bottom" horizontal="end">
+    <!-- <ion-fab vertical="bottom" horizontal="end">
         <ion-fab-button>Maps</ion-fab-button>
 
         <ion-fab-list side="top">
@@ -88,7 +128,7 @@
             <ion-fab-button>3rd Floor</ion-fab-button>
         </ion-fab-list>
 
-    </ion-fab>
+    </ion-fab> -->
 
     <!-- fab placed to the bottom and start and on the bottom edge of the content overlapping footer with a list to the right -->
     <ion-fab class="fab" vertical="bottom" horizontal="start" edge slot="fixed">
@@ -101,26 +141,4 @@
             </ion-fab-button>
         </ion-fab-list>
     </ion-fab>
-
-    <ion-card>
-        <ion-item href="#" class="activated">
-            <ion-icon name="wifi" slot="start"></ion-icon>
-            <ion-label>Card Link Item 1 .activated</ion-label>
-        </ion-item>
-
-        <ion-item href="#">
-            <ion-icon name="wine" slot="start"></ion-icon>
-            <ion-label>Card Link Item 2</ion-label>
-        </ion-item>
-
-        <ion-item class="activated">
-            <ion-icon name="warning" slot="start"></ion-icon>
-            <ion-label>Card Button Item 1 .activated</ion-label>
-        </ion-item>
-
-        <ion-item>
-            <ion-icon name="walk" slot="start"></ion-icon>
-            <ion-label>Card Button Item 2</ion-label>
-        </ion-item>
-    </ion-card>
 </ion-content>
