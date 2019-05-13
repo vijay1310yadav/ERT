@@ -12,25 +12,20 @@ import { LoaderService } from 'src/app/service/loader.service';
 export class EmployeeDetailPage {
   empId;
   emp;
-  constructor(private route: Router, private activatedRoute: ActivatedRoute,
-    private empService: EmployeeService,
-    private loaderService: LoaderService,
-  ) { }
 
+  constructor(
+    private route: Router,
+    private activatedRoute: ActivatedRoute,
+    private empService: EmployeeService) { }
 
   ionViewWillEnter() {
     this.empId = this.activatedRoute.snapshot.paramMap.get('id');
     // this.loaderService.presentLoading();
-    this.empService.getEmployeeById(this.empId).subscribe(
-      (emplResp) => {
+    this.empService.getEmployeeById(this.empId)
+      .subscribe((emplResp) => {
         // this.loaderService.dismissLoading();
         this.emp = emplResp;
-
       }
-    );
-
+      );
   }
-
-
-
 }

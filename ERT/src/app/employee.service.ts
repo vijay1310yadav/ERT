@@ -2,6 +2,7 @@ import { Employee } from './models/employee.model';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/internal/operators/take';
 
 
 const httpOptions = {
@@ -16,19 +17,27 @@ export class EmployeeService {
   constructor(private http: HttpClient) { }
 
   public getAllEmployee(): Observable<any> {
-
-
     return this.http.get('http://localhost:8080/ert/employeedetails');
   }
 
+
+  // public getAllEmployees(): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     this.http.get('http://localhost:8080/ert/employeedetails')
+  //       .pipe(take(1))
+  //       .subscribe((response) => {
+  //         resolve(response);
+  //       }, err => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
 
 
   public deleteEmployee(empId: number, emp: Employee) {
     console.log(empId);
     let url = 'http://localhost:8080/ert/employeedetails/remove/' + empId;
-
     console.log(url, "\tThis is the URL");
-
     return this.http.post(url, emp, { responseType: 'text' });
   }
 
@@ -42,17 +51,11 @@ export class EmployeeService {
 
 
   public updateEmployeeStatus(empId, body: any) {
-
     let url = 'http://localhost:8080/ert/employeedetails/' + empId;
     let response = this.http.post(url, body, { responseType: 'json' });
     response.subscribe(reply => {
       console.log("This is Updates response", reply);
       return reply;
     });
-  }
-
-  getAllEmployeeStatus() {
-
-    return this.http.get('http://localhost:8080/ert/employeestatus');
   }
 }

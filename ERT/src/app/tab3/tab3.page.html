@@ -49,5 +49,10 @@
     <ion-button shape="round">Send</ion-button>
 
 
+    <h3>Style 2 (Group Toggle)</h3>
+    <div class="button-bar"><a class="button" ng-class="{'button-positive': isActive('breakfast')}" ng-click="setActive('breakfast')">Breakfast</a><a class="button" ng-class="{'button-positive': isActive('lunch')}" ng-click="setActive('lunch')">Lunch</a><a class="button" ng-class="{'button-positive': isActive('dinner')}"
+            ng-click="setActive('dinner')">Dinner</a></div>
+    <p>Result : {{active}}</p>
+    <hr />
 
 </ion-content>

@@ -72,22 +72,11 @@ public class EmployeeRestController {
 	 employeeService.save(newEmployee);
 	
 	return newEmployee;
-	
-		
-//	
-//	if(oldEmployee == null) {
-//		theEmployee.setId(0);
-//
-//		employeeService.save(theEmployee);
-//
-//		return theEmployee;
-//	}
-//	
-//	employeeService.save(theEmployee);
-//	
-//	return oldEmployee;
-}
 
+}
+	
+	// DELETE using POST Method..
+	
 	@CrossOrigin(origins = "*")
 	@PostMapping("/employeedetails/remove/{employeeId}")
 	public String removeEmployee(@PathVariable int employeeId) {
@@ -103,18 +92,7 @@ public class EmployeeRestController {
 		return "Id is deleted - " + employeeId;
 	}
 	
-	
-//		if(theEmployee == null) {
-//			throw new RuntimeException("Exception id not found-  "+ EmployeeId);
-//		}
-//		
-//		employeeService.deleteById(EmployeeId);
-//		
-//		return "Successfully Deleted Employee with ID: - " + EmployeeId;
-//	}
-	
-	
-	
+
 	// DELETE using POST Method..
 //	
 //	@PostMapping("/employeedetails/{employeeId}")

@@ -9,3 +9,17 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+.safe {
+    background: rgb(174, 240, 199);
+    color: rgb(0, 0, 0);
+}
+
+.danger {
+    background: rgb(235, 182, 202);
+    color: rgb(0, 0, 0);
+}
+
+.unknwon {
+    background: rgb(122, 122, 122);
+    color: rgb(255, 255, 255);
+}

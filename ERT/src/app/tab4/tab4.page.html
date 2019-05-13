@@ -1,35 +1,31 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tab4</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>tab4</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar></ion-searchbar>
-  
-  <ion-item>
-    <ion-label>My Item</ion-label>
-    <ion-badge slot="end" color="danger">22</ion-badge>
-  </ion-item>
+    <ion-searchbar></ion-searchbar>
+
+    <ion-item>
+        <ion-label>My Item</ion-label>
+        <ion-badge slot="end" color="danger">22</ion-badge>
+    </ion-item>
 
 
-  <!-- Default backdrop -->
-<ion-backdrop></ion-backdrop>
+    <!-- Default backdrop -->
+    <ion-backdrop></ion-backdrop>
 
-<!-- Backdrop that is not tappable -->
-<ion-backdrop tappable="false"></ion-backdrop>
+    <!-- Backdrop that is not tappable -->
+    <ion-backdrop tappable="false"></ion-backdrop>
 
-<!-- Backdrop that is not visible -->
-<ion-backdrop visible="false"></ion-backdrop>
+    <!-- Backdrop that is not visible -->
+    <ion-backdrop visible="false"></ion-backdrop>
 
-<!-- Backdrop with propagation -->
-<ion-backdrop stopPropagation="false"></ion-backdrop>
+    <!-- Backdrop with propagation -->
+    <ion-backdrop stopPropagation="false"></ion-backdrop>
 
-<!-- Backdrop that sets dynamic properties -->
-<ion-backdrop
-  [tappable]="enableBackdropDismiss"
-  [visible]="showBackdrop"
-  [stopPropagation]="shouldPropagate">
-</ion-backdrop>
-
+    <!-- Backdrop that sets dynamic properties -->
+    <ion-backdrop [tappable]="enableBackdropDismiss" [visible]="showBackdrop" [stopPropagation]="shouldPropagate">
+    </ion-backdrop>
 </ion-content>
