@@ -34,10 +34,6 @@ export class Tab2Page {
 
 
 
-
-
-
-
     // this.status = empService.getAllEmployeeStatus().subscribe((response) => {
     //   console.log("Get ALL EmployeesSTATUS request", response);
 

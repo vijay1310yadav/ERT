@@ -17,6 +17,7 @@ export class Tab3Page {
   body: any;
   statusValue;
   changedStatus: string;
+  isSelected: any;
 
   constructor(private empService: EmployeeService, private http: HttpClient, private route: Router) {
 
@@ -26,39 +27,37 @@ export class Tab3Page {
       console.log(response);
       this.employees = response;
     });
-
-
-
     console.log("This is new body");
-
-
   }
 
+  
+  onDetails(url) {
+    // console.log(url);
+    this.route.navigateByUrl(url);
+  }
 
-
-  onChange(value) {
+  onChange(value, empId) {
+    var temp;
     console.log("This is the value", value);
     this.statusValue = value;
-    // let newBody = {
-    //   "id": 1,
-    //   "imageUrl": "https://i.stack.imgur.com/dWrvS.png",
-    //   "firstName": "Vijay",
-    //   "lastName": "Yadav",
-    //   "emailId": "vijay@karma.com",
-    //   "dob": "1994",
-    //   "department": "I.T.",
-    //   "attendance": false,
-    //   "status": this.statusValue
-    // };
-    return this.statusValue;
+    for (let em of this.employees) {
+      for (let value in em) {
+        if (em.id == empId) {
 
+          temp = em;
+        }
+      }
+    }
+    console.log("This is the em " + temp.status);
 
-    // this.empService.updateEmployeeStatus(newBody);
-    // this.http.post('http://localhost:8080/ert/employeedetails', newBody);
+    temp.status = value;
+    this.empService.updateEmployeeStatus(empId, temp);
 
-    // console.log(newBody);
+    // let tempEmp: Employee[] = this.employees;
+    // console.log(tempEmp, "This is temp Emp");
+
+  
   }
-
 
 
 }
